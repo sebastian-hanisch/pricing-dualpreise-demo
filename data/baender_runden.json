@@ -1,0 +1,156 @@
+{
+ "beschreibung": "Eine ganze Spaltenerzeugung je Instanz bis zur Konvergenz; Spalten einschließlich der n Einzelfahrten vom Start.",
+ "umgebung": "Python 3.14.6, scipy 1.18.1",
+ "zeilen": [
+  {
+   "breite": 40,
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 11,
+     "spalten": 157,
+     "labels": 14900,
+     "schranke": 933.380888
+    },
+    {
+     "seed": 1,
+     "runden": 18,
+     "spalten": 224,
+     "labels": 34681,
+     "schranke": 853.479505
+    },
+    {
+     "seed": 2,
+     "runden": 15,
+     "spalten": 235,
+     "labels": 23414,
+     "schranke": 822.166304
+    },
+    {
+     "seed": 3,
+     "runden": 20,
+     "spalten": 294,
+     "labels": 41441,
+     "schranke": 759.03205
+    },
+    {
+     "seed": 4,
+     "runden": 18,
+     "spalten": 243,
+     "labels": 24260,
+     "schranke": 921.007915
+    },
+    {
+     "seed": 5,
+     "runden": 31,
+     "spalten": 333,
+     "labels": 41426,
+     "schranke": 843.764732
+    }
+   ],
+   "quelle": "tools/messreihen.py runden: n = 30, Breite 40, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, 15 neue Spalten je Runde"
+  },
+  {
+   "breite": 100,
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 15,
+     "spalten": 214,
+     "labels": 62724,
+     "schranke": 862.392042
+    },
+    {
+     "seed": 1,
+     "runden": 17,
+     "spalten": 258,
+     "labels": 99333,
+     "schranke": 791.262599
+    },
+    {
+     "seed": 2,
+     "runden": 22,
+     "spalten": 283,
+     "labels": 101584,
+     "schranke": 751.895197
+    },
+    {
+     "seed": 3,
+     "runden": 20,
+     "spalten": 286,
+     "labels": 137992,
+     "schranke": 703.064777
+    },
+    {
+     "seed": 4,
+     "runden": 20,
+     "spalten": 282,
+     "labels": 102766,
+     "schranke": 822.020458
+    },
+    {
+     "seed": 5,
+     "runden": 29,
+     "spalten": 435,
+     "labels": 120067,
+     "schranke": 789.66811
+    }
+   ],
+   "quelle": "tools/messreihen.py runden: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, 15 neue Spalten je Runde"
+  },
+  {
+   "breite": 200,
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 23,
+     "spalten": 337,
+     "labels": 309957,
+     "schranke": 835.73883
+    },
+    {
+     "seed": 1,
+     "runden": 23,
+     "spalten": 326,
+     "labels": 339645,
+     "schranke": 778.682735
+    },
+    {
+     "seed": 2,
+     "runden": 26,
+     "spalten": 381,
+     "labels": 357886,
+     "schranke": 724.435211
+    },
+    {
+     "seed": 3,
+     "runden": 24,
+     "spalten": 340,
+     "labels": 478654,
+     "schranke": 672.344081
+    },
+    {
+     "seed": 4,
+     "runden": 35,
+     "spalten": 455,
+     "labels": 684151,
+     "schranke": 748.87448
+    },
+    {
+     "seed": 5,
+     "runden": 23,
+     "spalten": 317,
+     "labels": 295464,
+     "schranke": 773.279448
+    }
+   ],
+   "quelle": "tools/messreihen.py runden: n = 30, Breite 200, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, 15 neue Spalten je Runde"
+  }
+ ]
+}

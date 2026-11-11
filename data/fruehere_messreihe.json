@@ -1,0 +1,37 @@
+{
+ "beschreibung": "Zahlen einer früheren Messreihe der Planung (Pythons random.Random als Instanzgenerator statt SplitMix64 dieser Demo, anderer Kern, gleicher Master). Hier nur aus den Rohdateien übernommen, in dieser Demo nicht neu gerechnet; sie dienen dem Vergleich mit den neu gerechneten Reihen.",
+ "umgebung": "in den Rohdateien nicht vermerkt",
+ "negativ": {
+  "n": 30, "breite": 100, "instanzen": 6, "k": 5,
+  "erste": {"depot": 30.0, "kunde": 664.7, "paare": 435.0},
+  "letzte": {"depot": 5.7, "kunde": 159.7, "paare": 70.5},
+  "quelle": "vormessung/run_p05.log, Teil A (n = 30, Breite 100, Zufalls-Seeds 0 bis 5 von random.Random, k = 5)"
+ },
+ "runden": {
+  "n": 30, "k": 5, "instanzen": 6,
+  "breiten": [40, 100, 200],
+  "runden_median": [15, 19.5, 23],
+  "spalten_median": [227.5, 279.5, 342],
+  "quelle": "vormessung/run_p05.log, Teil B aus out_v1_n30.txt (n = 30, k = 5, 6 Instanzen je Breite)"
+ },
+ "glaettung": {
+  "n30": {
+   "n": 30, "instanzen": 6, "alpha": [0, 50, 80, 90],
+   "runden_mittel": [19.17, 19.17, 22.17, 30.0], "aufrufe_mittel": [19.17, 23.0, 28.0, 38.5],
+   "quelle": "vormessung/run_p05.log, Teil D aus out_v4.txt (n = 30, Breite 100, 6 Instanzen, k = 5)"
+  },
+  "n20": {
+   "n": 20, "instanzen": 12, "alpha": [0, 50, 80, 90],
+   "runden_mittel": [14.33, 13.83, 18.5, 21.0], "aufrufe_mittel": [14.33, 16.5, 23.5, 30.17],
+   "quelle": "vormessung/run_p05.log, Teil C (n = 20, Breite 100, 12 Instanzen, k = 5)"
+  }
+ },
+ "master": {
+  "paare": 47, "groesste_abweichung": 0.0,
+  "quelle": "vormessung/out_v7_zufall_auswertung.txt, out_v7_cluster_auswertung.txt, out_v7_lang_auswertung.txt (n = 30, 3 Instanztypen mit je 5 Instanzen, Pricing k = 1, 5, 8 und elementar, soweit fertig: 16 + 16 + 15 Paare)"
+ },
+ "v4_schranken": {
+  "quelle": "vormessung/out_v4.txt (n = 30, Breite 100, Zufalls-Seeds 0 bis 5 von random.Random, k = 5): Schranke der Spaltenerzeugung je Instanz",
+  "werte": [811.3095, 869.8012, 869.165, 849.2464, 786.2826, 900.0444]
+ }
+}

@@ -1,0 +1,312 @@
+{
+ "beschreibung": "Schranke der Spaltenerzeugung mit Überdeckungs- und mit Partitionierungs-Master, je Instanz beide.",
+ "umgebung": "Python 3.14.6, scipy 1.18.1",
+ "zeilen": [
+  {
+   "typ": "zufaellig",
+   "beschreibung": "zufällig verteilt, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 1,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 838.670234,
+     "partition": 838.670234
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 781.452135,
+     "partition": 781.452135
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 725.888068,
+     "partition": 725.888068
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 676.803154,
+     "partition": 676.803154
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 780.253896,
+     "partition": 780.253896
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ zufaellig (zufällig verteilt, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 1"
+  },
+  {
+   "typ": "zufaellig",
+   "beschreibung": "zufällig verteilt, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 862.392042,
+     "partition": 862.392042
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 791.262599,
+     "partition": 791.262599
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 751.895197,
+     "partition": 751.895197
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 703.064777,
+     "partition": 703.064777
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 822.020458,
+     "partition": 822.020458
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ zufaellig (zufällig verteilt, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 5"
+  },
+  {
+   "typ": "zufaellig",
+   "beschreibung": "zufällig verteilt, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 8,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 863.934663,
+     "partition": 863.934663
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 793.232036,
+     "partition": 793.232036
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 752.592877,
+     "partition": 752.592877
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 703.322941,
+     "partition": 703.322941
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 822.769504,
+     "partition": 822.769504
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ zufaellig (zufällig verteilt, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 8"
+  },
+  {
+   "typ": "gruppiert",
+   "beschreibung": "gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 1,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 584.026216,
+     "partition": 584.026216
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 404.322909,
+     "partition": 404.322909
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 360.298561,
+     "partition": 360.298561
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 492.252088,
+     "partition": 492.252088
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 473.083015,
+     "partition": 473.083015
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ gruppiert (gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 1"
+  },
+  {
+   "typ": "gruppiert",
+   "beschreibung": "gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 587.459022,
+     "partition": 587.459022
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 416.194516,
+     "partition": 416.194516
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 379.262028,
+     "partition": 379.262028
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 502.68999,
+     "partition": 502.68999
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 479.420671,
+     "partition": 479.420671
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ gruppiert (gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 5"
+  },
+  {
+   "typ": "gruppiert",
+   "beschreibung": "gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100",
+   "n": 30,
+   "k": 8,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 589.579394,
+     "partition": 589.579394
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 416.338319,
+     "partition": 416.338319
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 379.468285,
+     "partition": 379.468285
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 504.687653,
+     "partition": 504.687653
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 479.420671,
+     "partition": 479.420671
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ gruppiert (gruppiert um fünf Zentren, Horizont 300, Kapazität 70, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 8"
+  },
+  {
+   "typ": "lang",
+   "beschreibung": "zufällig verteilt, Horizont 500, Kapazität 120, Breite 100",
+   "n": 30,
+   "k": 1,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 768.385733,
+     "partition": 768.385733
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 652.463493,
+     "partition": 652.463493
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 686.920372,
+     "partition": 686.920372
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 618.894429,
+     "partition": 618.894429
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 750.7635,
+     "partition": 750.7635
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ lang (zufällig verteilt, Horizont 500, Kapazität 120, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 1"
+  },
+  {
+   "typ": "lang",
+   "beschreibung": "zufällig verteilt, Horizont 500, Kapazität 120, Breite 100",
+   "n": 30,
+   "k": 5,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 806.499636,
+     "partition": 806.499636
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 694.554903,
+     "partition": 694.554903
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 706.971941,
+     "partition": 706.971941
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 633.472446,
+     "partition": 633.472446
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 789.115889,
+     "partition": 789.115889
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ lang (zufällig verteilt, Horizont 500, Kapazität 120, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 5"
+  },
+  {
+   "typ": "lang",
+   "beschreibung": "zufällig verteilt, Horizont 500, Kapazität 120, Breite 100",
+   "n": 30,
+   "k": 8,
+   "instanzen": [
+    {
+     "seed": 0,
+     "ueberdeckung": 806.499636,
+     "partition": 806.499636
+    },
+    {
+     "seed": 1,
+     "ueberdeckung": 695.256608,
+     "partition": 695.256608
+    },
+    {
+     "seed": 2,
+     "ueberdeckung": 706.971941,
+     "partition": 706.971941
+    },
+    {
+     "seed": 3,
+     "ueberdeckung": 633.486944,
+     "partition": 633.486944
+    },
+    {
+     "seed": 4,
+     "ueberdeckung": 791.202321,
+     "partition": 791.202321
+    }
+   ],
+   "quelle": "tools/messreihen.py master: n = 30, Typ lang (zufällig verteilt, Horizont 500, Kapazität 120, Breite 100), Zufalls-Seeds 0 bis 4, Pricing k = 8"
+  }
+ ]
+}

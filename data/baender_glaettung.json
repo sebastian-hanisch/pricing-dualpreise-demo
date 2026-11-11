@@ -1,0 +1,582 @@
+{
+ "beschreibung": "Einfache Glättung zur Vorrunde (nicht Wentges, nicht du Merle); dieselbe Schranke in allen α je Instanz.",
+ "umgebung": "Python 3.14.6, scipy 1.18.1",
+ "zeilen": [
+  {
+   "n": 20,
+   "breite": 100,
+   "k": 5,
+   "alpha": 0,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 14,
+     "aufrufe": 14,
+     "fehlgriffe": 0,
+     "schranke": 613.429622
+    },
+    {
+     "seed": 1,
+     "runden": 13,
+     "aufrufe": 13,
+     "fehlgriffe": 0,
+     "schranke": 589.601141
+    },
+    {
+     "seed": 2,
+     "runden": 17,
+     "aufrufe": 17,
+     "fehlgriffe": 0,
+     "schranke": 521.701329
+    },
+    {
+     "seed": 3,
+     "runden": 13,
+     "aufrufe": 13,
+     "fehlgriffe": 0,
+     "schranke": 508.59905
+    },
+    {
+     "seed": 4,
+     "runden": 16,
+     "aufrufe": 16,
+     "fehlgriffe": 0,
+     "schranke": 627.409512
+    },
+    {
+     "seed": 5,
+     "runden": 14,
+     "aufrufe": 14,
+     "fehlgriffe": 0,
+     "schranke": 662.741852
+    },
+    {
+     "seed": 6,
+     "runden": 11,
+     "aufrufe": 11,
+     "fehlgriffe": 0,
+     "schranke": 717.879363
+    },
+    {
+     "seed": 7,
+     "runden": 16,
+     "aufrufe": 16,
+     "fehlgriffe": 0,
+     "schranke": 646.557012
+    },
+    {
+     "seed": 8,
+     "runden": 11,
+     "aufrufe": 11,
+     "fehlgriffe": 0,
+     "schranke": 603.709914
+    },
+    {
+     "seed": 9,
+     "runden": 14,
+     "aufrufe": 14,
+     "fehlgriffe": 0,
+     "schranke": 574.162684
+    },
+    {
+     "seed": 10,
+     "runden": 16,
+     "aufrufe": 16,
+     "fehlgriffe": 0,
+     "schranke": 631.151762
+    },
+    {
+     "seed": 11,
+     "runden": 9,
+     "aufrufe": 9,
+     "fehlgriffe": 0,
+     "schranke": 672.551702
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 20, Breite 100, Zufalls-Seeds 0 bis 11, Pricing k = 5, Überdeckungs-Master, α = 0 %"
+  },
+  {
+   "n": 20,
+   "breite": 100,
+   "k": 5,
+   "alpha": 50,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 17,
+     "aufrufe": 20,
+     "fehlgriffe": 3,
+     "schranke": 613.429622
+    },
+    {
+     "seed": 1,
+     "runden": 15,
+     "aufrufe": 21,
+     "fehlgriffe": 6,
+     "schranke": 589.601141
+    },
+    {
+     "seed": 2,
+     "runden": 22,
+     "aufrufe": 30,
+     "fehlgriffe": 8,
+     "schranke": 521.701329
+    },
+    {
+     "seed": 3,
+     "runden": 15,
+     "aufrufe": 19,
+     "fehlgriffe": 4,
+     "schranke": 508.59905
+    },
+    {
+     "seed": 4,
+     "runden": 13,
+     "aufrufe": 16,
+     "fehlgriffe": 3,
+     "schranke": 627.409512
+    },
+    {
+     "seed": 5,
+     "runden": 14,
+     "aufrufe": 18,
+     "fehlgriffe": 4,
+     "schranke": 662.741852
+    },
+    {
+     "seed": 6,
+     "runden": 9,
+     "aufrufe": 11,
+     "fehlgriffe": 2,
+     "schranke": 717.879363
+    },
+    {
+     "seed": 7,
+     "runden": 11,
+     "aufrufe": 14,
+     "fehlgriffe": 3,
+     "schranke": 646.557012
+    },
+    {
+     "seed": 8,
+     "runden": 8,
+     "aufrufe": 9,
+     "fehlgriffe": 1,
+     "schranke": 603.709914
+    },
+    {
+     "seed": 9,
+     "runden": 13,
+     "aufrufe": 17,
+     "fehlgriffe": 4,
+     "schranke": 574.162684
+    },
+    {
+     "seed": 10,
+     "runden": 18,
+     "aufrufe": 24,
+     "fehlgriffe": 6,
+     "schranke": 631.151762
+    },
+    {
+     "seed": 11,
+     "runden": 9,
+     "aufrufe": 11,
+     "fehlgriffe": 2,
+     "schranke": 672.551702
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 20, Breite 100, Zufalls-Seeds 0 bis 11, Pricing k = 5, Überdeckungs-Master, α = 50 %"
+  },
+  {
+   "n": 20,
+   "breite": 100,
+   "k": 5,
+   "alpha": 80,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 16,
+     "aufrufe": 20,
+     "fehlgriffe": 4,
+     "schranke": 613.429622
+    },
+    {
+     "seed": 1,
+     "runden": 19,
+     "aufrufe": 24,
+     "fehlgriffe": 5,
+     "schranke": 589.601141
+    },
+    {
+     "seed": 2,
+     "runden": 28,
+     "aufrufe": 37,
+     "fehlgriffe": 9,
+     "schranke": 521.701329
+    },
+    {
+     "seed": 3,
+     "runden": 22,
+     "aufrufe": 28,
+     "fehlgriffe": 6,
+     "schranke": 508.59905
+    },
+    {
+     "seed": 4,
+     "runden": 19,
+     "aufrufe": 25,
+     "fehlgriffe": 6,
+     "schranke": 627.409512
+    },
+    {
+     "seed": 5,
+     "runden": 15,
+     "aufrufe": 19,
+     "fehlgriffe": 4,
+     "schranke": 662.741852
+    },
+    {
+     "seed": 6,
+     "runden": 17,
+     "aufrufe": 21,
+     "fehlgriffe": 4,
+     "schranke": 717.879363
+    },
+    {
+     "seed": 7,
+     "runden": 14,
+     "aufrufe": 17,
+     "fehlgriffe": 3,
+     "schranke": 646.557012
+    },
+    {
+     "seed": 8,
+     "runden": 16,
+     "aufrufe": 20,
+     "fehlgriffe": 4,
+     "schranke": 603.709914
+    },
+    {
+     "seed": 9,
+     "runden": 22,
+     "aufrufe": 29,
+     "fehlgriffe": 7,
+     "schranke": 574.162684
+    },
+    {
+     "seed": 10,
+     "runden": 19,
+     "aufrufe": 26,
+     "fehlgriffe": 7,
+     "schranke": 631.151762
+    },
+    {
+     "seed": 11,
+     "runden": 14,
+     "aufrufe": 17,
+     "fehlgriffe": 3,
+     "schranke": 672.551702
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 20, Breite 100, Zufalls-Seeds 0 bis 11, Pricing k = 5, Überdeckungs-Master, α = 80 %"
+  },
+  {
+   "n": 20,
+   "breite": 100,
+   "k": 5,
+   "alpha": 90,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 28,
+     "aufrufe": 39,
+     "fehlgriffe": 11,
+     "schranke": 613.429622
+    },
+    {
+     "seed": 1,
+     "runden": 28,
+     "aufrufe": 38,
+     "fehlgriffe": 10,
+     "schranke": 589.601141
+    },
+    {
+     "seed": 2,
+     "runden": 22,
+     "aufrufe": 27,
+     "fehlgriffe": 5,
+     "schranke": 521.701329
+    },
+    {
+     "seed": 3,
+     "runden": 30,
+     "aufrufe": 39,
+     "fehlgriffe": 9,
+     "schranke": 508.59905
+    },
+    {
+     "seed": 4,
+     "runden": 28,
+     "aufrufe": 37,
+     "fehlgriffe": 9,
+     "schranke": 627.409512
+    },
+    {
+     "seed": 5,
+     "runden": 27,
+     "aufrufe": 33,
+     "fehlgriffe": 6,
+     "schranke": 662.741852
+    },
+    {
+     "seed": 6,
+     "runden": 14,
+     "aufrufe": 22,
+     "fehlgriffe": 8,
+     "schranke": 717.879363
+    },
+    {
+     "seed": 7,
+     "runden": 16,
+     "aufrufe": 25,
+     "fehlgriffe": 9,
+     "schranke": 646.557012
+    },
+    {
+     "seed": 8,
+     "runden": 24,
+     "aufrufe": 34,
+     "fehlgriffe": 10,
+     "schranke": 603.709914
+    },
+    {
+     "seed": 9,
+     "runden": 21,
+     "aufrufe": 31,
+     "fehlgriffe": 10,
+     "schranke": 574.162684
+    },
+    {
+     "seed": 10,
+     "runden": 24,
+     "aufrufe": 35,
+     "fehlgriffe": 11,
+     "schranke": 631.151762
+    },
+    {
+     "seed": 11,
+     "runden": 17,
+     "aufrufe": 27,
+     "fehlgriffe": 10,
+     "schranke": 672.551702
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 20, Breite 100, Zufalls-Seeds 0 bis 11, Pricing k = 5, Überdeckungs-Master, α = 90 %"
+  },
+  {
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "alpha": 0,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 15,
+     "aufrufe": 15,
+     "fehlgriffe": 0,
+     "schranke": 862.392042
+    },
+    {
+     "seed": 1,
+     "runden": 17,
+     "aufrufe": 17,
+     "fehlgriffe": 0,
+     "schranke": 791.262599
+    },
+    {
+     "seed": 2,
+     "runden": 22,
+     "aufrufe": 22,
+     "fehlgriffe": 0,
+     "schranke": 751.895197
+    },
+    {
+     "seed": 3,
+     "runden": 20,
+     "aufrufe": 20,
+     "fehlgriffe": 0,
+     "schranke": 703.064777
+    },
+    {
+     "seed": 4,
+     "runden": 20,
+     "aufrufe": 20,
+     "fehlgriffe": 0,
+     "schranke": 822.020458
+    },
+    {
+     "seed": 5,
+     "runden": 29,
+     "aufrufe": 29,
+     "fehlgriffe": 0,
+     "schranke": 789.66811
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, α = 0 %"
+  },
+  {
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "alpha": 50,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 13,
+     "aufrufe": 15,
+     "fehlgriffe": 2,
+     "schranke": 862.392042
+    },
+    {
+     "seed": 1,
+     "runden": 19,
+     "aufrufe": 21,
+     "fehlgriffe": 2,
+     "schranke": 791.262599
+    },
+    {
+     "seed": 2,
+     "runden": 16,
+     "aufrufe": 18,
+     "fehlgriffe": 2,
+     "schranke": 751.895197
+    },
+    {
+     "seed": 3,
+     "runden": 22,
+     "aufrufe": 26,
+     "fehlgriffe": 4,
+     "schranke": 703.064777
+    },
+    {
+     "seed": 4,
+     "runden": 21,
+     "aufrufe": 24,
+     "fehlgriffe": 3,
+     "schranke": 822.020458
+    },
+    {
+     "seed": 5,
+     "runden": 28,
+     "aufrufe": 33,
+     "fehlgriffe": 5,
+     "schranke": 789.66811
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, α = 50 %"
+  },
+  {
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "alpha": 80,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 18,
+     "aufrufe": 20,
+     "fehlgriffe": 2,
+     "schranke": 862.392042
+    },
+    {
+     "seed": 1,
+     "runden": 22,
+     "aufrufe": 28,
+     "fehlgriffe": 6,
+     "schranke": 791.262599
+    },
+    {
+     "seed": 2,
+     "runden": 27,
+     "aufrufe": 36,
+     "fehlgriffe": 9,
+     "schranke": 751.895197
+    },
+    {
+     "seed": 3,
+     "runden": 23,
+     "aufrufe": 29,
+     "fehlgriffe": 6,
+     "schranke": 703.064777
+    },
+    {
+     "seed": 4,
+     "runden": 22,
+     "aufrufe": 25,
+     "fehlgriffe": 3,
+     "schranke": 822.020458
+    },
+    {
+     "seed": 5,
+     "runden": 34,
+     "aufrufe": 40,
+     "fehlgriffe": 6,
+     "schranke": 789.66811
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, α = 80 %"
+  },
+  {
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "alpha": 90,
+   "instanzen": [
+    {
+     "seed": 0,
+     "runden": 24,
+     "aufrufe": 31,
+     "fehlgriffe": 7,
+     "schranke": 862.392042
+    },
+    {
+     "seed": 1,
+     "runden": 31,
+     "aufrufe": 39,
+     "fehlgriffe": 8,
+     "schranke": 791.262599
+    },
+    {
+     "seed": 2,
+     "runden": 38,
+     "aufrufe": 49,
+     "fehlgriffe": 11,
+     "schranke": 751.895197
+    },
+    {
+     "seed": 3,
+     "runden": 33,
+     "aufrufe": 40,
+     "fehlgriffe": 7,
+     "schranke": 703.064777
+    },
+    {
+     "seed": 4,
+     "runden": 29,
+     "aufrufe": 34,
+     "fehlgriffe": 5,
+     "schranke": 822.020458
+    },
+    {
+     "seed": 5,
+     "runden": 50,
+     "aufrufe": 66,
+     "fehlgriffe": 16,
+     "schranke": 789.66811
+    }
+   ],
+   "quelle": "tools/messreihen.py glaettung: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, Pricing k = 5, Überdeckungs-Master, α = 90 %"
+  }
+ ]
+}

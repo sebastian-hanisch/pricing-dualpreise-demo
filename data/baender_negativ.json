@@ -1,0 +1,104 @@
+{
+ "beschreibung": "Anzahl negativer Bogenlängen d(i, j) − π(j) und negativer Hin-und-zurück-Kreise i, j, i; reine Rechnung an den Dualpreisen, kein Labeling-Ergebnis.",
+ "umgebung": "Python 3.14.6, scipy 1.18.1",
+ "zeilen": [
+  {
+   "runde": "erste",
+   "beschreibung": "erste Runde: nur Einzelfahrten im Master, Dualpreis = 2 x Entfernung zum Depot",
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "depot_gesamt": 30,
+   "kunde_gesamt": 870,
+   "paare_gesamt": 435,
+   "instanzen": [
+    {
+     "seed": 0,
+     "depot": 30,
+     "kunde": 684,
+     "paare": 435
+    },
+    {
+     "seed": 1,
+     "depot": 30,
+     "kunde": 657,
+     "paare": 435
+    },
+    {
+     "seed": 2,
+     "depot": 30,
+     "kunde": 665,
+     "paare": 435
+    },
+    {
+     "seed": 3,
+     "depot": 30,
+     "kunde": 664,
+     "paare": 435
+    },
+    {
+     "seed": 4,
+     "depot": 30,
+     "kunde": 720,
+     "paare": 435
+    },
+    {
+     "seed": 5,
+     "depot": 30,
+     "kunde": 664,
+     "paare": 435
+    }
+   ],
+   "quelle": "tools/messreihen.py negativ: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, erste Runde, Pricing k = 5, Überdeckungs-Master"
+  },
+  {
+   "runde": "letzte",
+   "beschreibung": "letzte Runde der Spaltenerzeugung (Master-Dualpreise, wenn das Pricing nichts mehr findet)",
+   "n": 30,
+   "breite": 100,
+   "k": 5,
+   "depot_gesamt": 30,
+   "kunde_gesamt": 870,
+   "paare_gesamt": 435,
+   "instanzen": [
+    {
+     "seed": 0,
+     "depot": 2,
+     "kunde": 150,
+     "paare": 71
+    },
+    {
+     "seed": 1,
+     "depot": 4,
+     "kunde": 162,
+     "paare": 72
+    },
+    {
+     "seed": 2,
+     "depot": 7,
+     "kunde": 145,
+     "paare": 69
+    },
+    {
+     "seed": 3,
+     "depot": 4,
+     "kunde": 149,
+     "paare": 66
+    },
+    {
+     "seed": 4,
+     "depot": 6,
+     "kunde": 152,
+     "paare": 75
+    },
+    {
+     "seed": 5,
+     "depot": 6,
+     "kunde": 137,
+     "paare": 64
+    }
+   ],
+   "quelle": "tools/messreihen.py negativ: n = 30, Breite 100, Zufalls-Seeds 0 bis 5, letzte Runde, Pricing k = 5, Überdeckungs-Master"
+  }
+ ]
+}
