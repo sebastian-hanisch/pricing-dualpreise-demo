@@ -1,5 +1,7 @@
 # Pricing aus Dualpreisen – warum Dijkstra nicht mehr reicht – Streamlit-Demo
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-pricing-dualpreise-demo.streamlit.app/)**
+
 Demo der Reihe „Ressourcenwege und Spaltenerzeugung“ in der „Konzepte“-Reihe der Website „Sebastian Hanisch – Operations Research und Machine Learning“. Sie zeigt, was am **Pricing** der Spaltenerzeugung neu ist: Die Bogenlängen entstehen aus **Dualpreisen** (Entfernung minus Dualpreis des Zielkunden), viele von ihnen sind negativ, und das übliche Dijkstra-Verfahren findet den kürzesten Weg dann nicht mehr verlässlich (im Handbeispiel verfehlt es ihn). Das Labeling mit Last, Zeitfenstern und Dominanz aus den früheren Demos der Reihe findet den besten fahrbaren Weg (im Handbeispiel −10; der kürzeste Weg ohne Grenzen, −28, ist nicht fahrbar): Es verlängert die Teilwege nach wachsender Zeit statt nach Kosten, und die Grenzen machen die Wege endlich. Das Vehikel ist ein Handbeispiel mit 7 Kunden, das sich von Hand nachrechnen lässt, und selbst erzeugte Kundeninstanzen im Stil der Solomon-Benchmarks (nicht die Originalinstanzen). Solche Wegsuchen sind das Pricing in der Tourenplanung, etwa in [crew-pairing-demo](https://github.com/sebastian-hanisch/crew-pairing-demo); diese Demo erklärt die Schleife dahinter.
 
 ## Kernfrage
