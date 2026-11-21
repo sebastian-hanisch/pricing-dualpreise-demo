@@ -84,7 +84,7 @@ Weiter unten: der Expander **💬 In einfachen Worten**, fünf Experimente (🔬
 with st.expander("💬 In einfachen Worten"):
     st.markdown(
         """
-Bei der **Spaltenerzeugung** löst ein Hauptplan, der **Master**, die Aufgabe nur mit den Touren, die er schon kennt, und rechnet jedem Kunden einen Wert zu, den **Dualpreis**. Das **Pricing** sucht danach eine neue Tour, die weniger kostet, als ihre Kunden an Wert einbringen. Das ist eine Wegsuche, bei der jede Fahrt ihre Strecke kostet und den Wert des Zielkunden gutschreibt. Viele dieser Längen liegen unter null. Das übliche Verfahren für kürzeste Wege, **Dijkstra**, kann dann einen Kunden zu früh abhaken und den besten Weg verfehlen; im Handbeispiel tut es das. Das **Labeling** findet den besten fahrbaren Weg, weil Last, Zeitfenster und die Regel „jeder Kunde höchstens einmal“ die Wege begrenzen. Die Demo rechnet das an einem Handbeispiel von Hand nach und fragt zuletzt, ob das Glätten der Dualpreise Runden spart.
+Bei der **Spaltengenerierung** löst ein Hauptplan, der **Master**, die Aufgabe nur mit den Touren, die er schon kennt, und rechnet jedem Kunden einen Wert zu, den **Dualpreis**. Das **Pricing** sucht danach eine neue Tour, die weniger kostet, als ihre Kunden an Wert einbringen. Das ist eine Wegsuche, bei der jede Fahrt ihre Strecke kostet und den Wert des Zielkunden gutschreibt. Viele dieser Längen liegen unter null. Das übliche Verfahren für kürzeste Wege, **Dijkstra**, kann dann einen Kunden zu früh abhaken und den besten Weg verfehlen; im Handbeispiel tut es das. Das **Labeling** findet den besten fahrbaren Weg, weil Last, Zeitfenster und die Regel „jeder Kunde höchstens einmal“ die Wege begrenzen. Die Demo rechnet das an einem Handbeispiel von Hand nach und fragt zuletzt, ob das Glätten der Dualpreise Runden spart.
 
 [Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/pricing-dualpreise-erklaert.html)
         """
@@ -385,7 +385,7 @@ with st.expander("📐 Mathematische Formulierung"):
     # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/pricing-dualpreise-erklaert.json, nicht von Hand ändern)
     st.markdown(
         r"""
-**Lesehilfe.** Gegeben sind ein Depot, $n$ Kunden mit Last, Zeitfenster und Entfernungen (Entfernung = Fahrzeit = Kosten) und eine Menge $R$ bekannter Touren (Spalten). Gesucht sind die billigste Kombination der Touren, die jeden Kunden bedient (Master), und in jeder Runde eine neue Tour mit negativen reduzierten Kosten (Pricing). Verfahren: Spaltenerzeugung mit Labeling.
+**Lesehilfe.** Gegeben sind ein Depot, $n$ Kunden mit Last, Zeitfenster und Entfernungen (Entfernung = Fahrzeit = Kosten) und eine Menge $R$ bekannter Touren (Spalten). Gesucht sind die billigste Kombination der Touren, die jeden Kunden bedient (Master), und in jeder Runde eine neue Tour mit negativen reduzierten Kosten (Pricing). Verfahren: Spaltengenerierung mit Labeling.
 
 | Symbol | Bedeutung |
 |---|---|
