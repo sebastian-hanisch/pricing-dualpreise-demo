@@ -1,7 +1,7 @@
 """Pricing aus Dualpreisen – warum Dijkstra nicht mehr reicht: interaktive Konzept-Demo
 Sebastian Hanisch - Operations Research und Machine Learning
 
-Zeigt an einem Handbeispiel mit 7 Kunden und an Kundeninstanzen, wie in der Spaltenerzeugung die Bogenlängen des Pricings aus Dualpreisen entstehen, warum viele von ihnen
+Zeigt an einem Handbeispiel mit 7 Kunden und an Kundeninstanzen, wie in der Spaltengenerierung die Bogenlängen des Pricings aus Dualpreisen entstehen, warum viele von ihnen
 negativ sind, warum Dijkstra daran scheitert und das Labeling aus den früheren Demos der Linie den Weg findet. Aufbau nach DEMO-PLAYBOOK §2.
 
 Lauffähig mit: streamlit run app.py
@@ -69,12 +69,12 @@ with st.container(key="kopf"):
     st.title("💶 Pricing aus Dualpreisen – warum Dijkstra nicht mehr reicht")
 st.markdown(
     """
-Bei der **Spaltenerzeugung** (etwa in der Tourenplanung) löst ein kleines Modell, der **Master**, die Aufgabe nur mit den bisher bekannten Touren und nennt zu jedem Kunden einen
+Bei der **Spaltengenerierung** (etwa in der Tourenplanung) löst ein kleines Modell, der **Master**, die Aufgabe nur mit den bisher bekannten Touren und nennt zu jedem Kunden einen
 **Dualpreis**: wie viel es dem Master wert ist, diesen Kunden zu bedienen. Das **Pricing** sucht danach eine neue Tour, die weniger kostet, als ihre Kunden an Dualpreisen einbringen.
 Das ist ein Weg im Kundennetz, dessen Bögen die Länge **Entfernung minus Dualpreis des Zielkunden** haben. Viele dieser Längen sind negativ; das übliche **Dijkstra**-Verfahren (jeder
 Knoten wird einmal abgeschlossen) findet dann den kürzesten Weg im Allgemeinen nicht mehr (im Handbeispiel verfehlt er ihn). Das **Labeling** mit Last, Zeitfenstern und Dominanz aus den früheren Demos der Reihe findet den besten **fahrbaren** Weg
 (im Handbeispiel −10; der kürzeste Weg ohne Grenzen, −28, ist nicht fahrbar): Es verlängert die Teilwege nach wachsender Zeit statt nach Kosten, und die Grenzen machen die Wege endlich. Diese Demo rechnet das an einem Handbeispiel mit 7 Kunden Zeile für Zeile und misst es an Kundeninstanzen. Hier steht das Pricing in einer
-laufenden Spaltenerzeugung.
+laufenden Spaltengenerierung.
 
 Weiter unten: der Expander **💬 In einfachen Worten**, fünf Experimente (🔬), der Abschnitt **🚧 Wo die Annahmen enden** und die Expander **📐 Mathematische Formulierung** und **⚠️ Annahmen, Grenzen und bekannte Probleme**.
 """
@@ -91,7 +91,7 @@ Bei der **Spaltenerzeugung** löst ein Hauptplan, der **Master**, die Aufgabe nu
     )
 # erklaerseite:einfach:end
 
-with st.expander("So funktioniert das Pricing in der Spaltenerzeugung", expanded=True):
+with st.expander("So funktioniert das Pricing in der Spaltengenerierung", expanded=True):
     st.markdown(
         """
 1. **Master:** Ein LP wählt aus den bekannten Touren („Spalten“) die billigste Kombination, die jeden Kunden **mindestens einmal** (Überdeckung) oder **genau einmal** (Partitionierung) bedient.
@@ -152,7 +152,7 @@ st.markdown("## 🎯 Ergebnis: das Handbeispiel in der ersten Runde")
 m1, m2, m3 = st.columns(3)
 m1.metric("Dijkstra mit den Längen des Pricings", f"Länge {ev.zahl_kurz(b1.dijkstra.laenge)}", delta=f"bester einfacher Weg: {ev.zahl_kurz(b1.einfach[1])}", delta_color="off")
 m2.metric("Bester zulässiger Weg (Labeling)", f"reduzierte Kosten {ev.zahl_kurz(l1.beste[0])}", delta=f"Weg {ev.weg_text(l1.beste[1])}", delta_color="off")
-m3.metric("Schranke der Spaltenerzeugung", ev.zahl_kurz(h.lauf.schranke), delta=f"nach {h.lauf.anzahl_runden} Runden", delta_color="off")
+m3.metric("Schranke der Spaltengenerierung", ev.zahl_kurz(h.lauf.schranke), delta=f"nach {h.lauf.anzahl_runden} Runden", delta_color="off")
 st.plotly_chart(V.build_handnetz(inst, b1.dijkstra.weg, l1.beste[1]), width="stretch", key="hand_chart")
 st.caption("Depot (Raute) und 7 Kunden mit Last und Zeitfenster. Orange gestrichelt: der Weg, den Dijkstra mit den Längen des Pricings in der ersten Runde findet. Grün: der beste zulässige Weg des Labelings. "
            "Die Linien sind Luftlinien; gerechnet wird mit dem Manhattan-Abstand.")
@@ -175,7 +175,7 @@ st.markdown(
 st.session_state["runde_hand"] = max(1, min(int(st.session_state.get("runde_hand", 1)), len(rs)))
 c1, c2 = st.columns(2)
 if len(rs) > 1:
-    runde = c1.slider("Runde der Spaltenerzeugung", 1, len(rs), key="runde_hand", help="Welche Dualpreise gelten: die des Masters dieser Runde.")
+    runde = c1.slider("Runde der Spaltengenerierung", 1, len(rs), key="runde_hand", help="Welche Dualpreise gelten: die des Masters dieser Runde.")
 else:
     runde = 1
 typ_name = c2.radio("Länge der Bögen", list(TYPEN), key="laengentyp", horizontal=False)
@@ -207,16 +207,16 @@ getattr(st, kind)(text)
 
 st.markdown("---")
 
-# --- Experiment 2: Labeling und Spaltenerzeugung -------------------------------------------------------------------------------------------------
+# --- Experiment 2: Labeling und Spaltengenerierung -------------------------------------------------------------------------------------------------
 
-st.subheader("🔬 Experiment 2: Labeling im Ressourcennetz und Spaltenerzeugung am Handbeispiel")
+st.subheader("🔬 Experiment 2: Labeling im Ressourcennetz und Spaltengenerierung am Handbeispiel")
 st.markdown(
     f"Je Runde ein Pricing-Aufruf: Das **Labeling** (elementar, mit Last, Fenstern und Dominanz) liefert die beste Route, sie wird als neue Spalte angehängt, der Master ({'Partitionierung' if settings.partition else 'Überdeckung'}) "
     "wird neu gelöst. Gewählt ist wieder die Runde; die Tabelle zeigt die Labels, die am Ende des Aufrufs übrig sind, und die Dominanzentscheidungen mit Begründung."
 )
 st.session_state["runde_labeling"] = max(1, min(int(st.session_state.get("runde_labeling", 1)), len(rs)))
 if len(rs) > 1:
-    runde2 = st.slider("Runde", 1, len(rs), key="runde_labeling", help="Welche Runde der Spaltenerzeugung gezeigt wird.")
+    runde2 = st.slider("Runde", 1, len(rs), key="runde_labeling", help="Welche Runde der Spaltengenerierung gezeigt wird.")
 else:
     runde2 = 1
 r2 = rs[int(runde2) - 1]
@@ -243,7 +243,7 @@ if r2.neue:
     st.markdown(f"**Neue Spalte dieser Runde:** Route {ev.weg_text(r2.neue[0])} mit reduzierten Kosten {ev.zahl_kurz(r2.beste_rc)} unter den Dualpreisen der Runde. Fahrplan:")
     st.markdown("\n".join(f"- {ev.fahrplan_text(x)}" for x in la.fahrplan))
 else:
-    st.markdown("**In dieser Runde findet das Pricing keine Route mit negativen reduzierten Kosten: Die Spaltenerzeugung ist am Ende.**")
+    st.markdown("**In dieser Runde findet das Pricing keine Route mit negativen reduzierten Kosten: Die Spaltengenerierung ist am Ende.**")
 st.markdown(f"**Master dieser Runde:** Wert {ev.zahl_kurz(r2.master_wert)}; Spalten mit Menge größer null:")
 st.dataframe(pd.DataFrame([{"Route": ev.weg_text(w), "Menge": ev.zahl(m, 2)} for w, m in r2.x]), hide_index=True, width="stretch")
 st.markdown("**Alle Runden im Überblick:**")
@@ -259,12 +259,12 @@ st.markdown("---")
 
 # --- Experiment 3: Größenregler --------------------------------------------------------------------------------------------------------------
 
-st.subheader("🔬 Experiment 3: Größe – Kunden, Fensterbreite und eine ganze Spaltenerzeugung")
+st.subheader("🔬 Experiment 3: Größe – Kunden, Fensterbreite und eine ganze Spaltengenerierung")
 st.markdown(
     f"Eine Kundeninstanz im Stil der Solomon-Benchmarks (selbst erzeugt, nicht die Originalinstanzen): Depot in der Mitte eines Quadrats von 100 × 100, Fahrzeit gleich Entfernung, Bedienzeit {C.BEDIENZEIT}, "
-    f"Horizont {C.HORIZONT}, Kapazität {C.KAPAZITAET}, Last 5 bis 25 je Kunde. Die Spaltenerzeugung läuft hier **live** bis zum Ende, mit elementarem Pricing; nur bis {C.N_MAX} Kunden, größere Fälle sind feste Messreihen."
+    f"Horizont {C.HORIZONT}, Kapazität {C.KAPAZITAET}, Last 5 bis 25 je Kunde. Die Spaltengenerierung läuft hier **live** bis zum Ende, mit elementarem Pricing; nur bis {C.N_MAX} Kunden, größere Fälle sind feste Messreihen."
 )
-with st.spinner("Die Spaltenerzeugung läuft …"):
+with st.spinner("Die Spaltengenerierung läuft …"):
     g = _gross(settings)
 if g.fehler:
     st.error(f"Prüfung des Ergebnisses fehlgeschlagen: {g.fehler}")
@@ -347,7 +347,7 @@ getattr(st, kind)(text)
 
 ru = _baender("runden")
 zr = [ev.zeile_runden(z) for z in ru["zeilen"]]
-st.markdown(f"**Runden und Spalten einer ganzen Spaltenerzeugung.** {ru['beschreibung']} 30 Kunden, Pricing mit Gedächtnis k = 5, Überdeckungs-Master, 6 Instanzen je Fensterbreite.")
+st.markdown(f"**Runden und Spalten einer ganzen Spaltengenerierung.** {ru['beschreibung']} 30 Kunden, Pricing mit Gedächtnis k = 5, Überdeckungs-Master, 6 Instanzen je Fensterbreite.")
 st.dataframe(pd.DataFrame(ev.tabelle_runden(zr)), hide_index=True, width="stretch")
 st.plotly_chart(V.build_balken([z["breite"] for z in zr], [("Runden (Median)", [z["runden"]["median"] for z in zr]), ("Runden (Maximum)", [z["runden"]["max"] for z in zr])],
                                titel_y="Runden", titel_x="Fensterbreite"), width="stretch", key="rounds_chart")

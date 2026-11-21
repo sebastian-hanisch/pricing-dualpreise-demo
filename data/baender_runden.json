@@ -1,5 +1,5 @@
 {
- "beschreibung": "Eine ganze Spaltenerzeugung je Instanz bis zur Konvergenz; Spalten einschließlich der n Einzelfahrten vom Start.",
+ "beschreibung": "Eine ganze Spaltengenerierung je Instanz bis zur Konvergenz; Spalten einschließlich der n Einzelfahrten vom Start.",
  "umgebung": "Python 3.14.6, scipy 1.18.1",
  "zeilen": [
   {

@@ -1,4 +1,4 @@
-"""Der Kern gegen die Handrechnung am Handbeispiel (DEMO-PLAYBOOK §1b): jede Einheit einzeln, dann das Labeling, Dijkstra und die Spaltenerzeugung.
+"""Der Kern gegen die Handrechnung am Handbeispiel (DEMO-PLAYBOOK §1b): jede Einheit einzeln, dann das Labeling, Dijkstra und die Spaltengenerierung.
 
 Erwartete Werte stehen als Rechnung da (Summen der Entfernungen und Preise). Die Zählungen der Labels (56, 20, 0, 36) und die Zahl der zulässigen Wege (79) stammen aus der
 unabhängigen Vorrechnung `vormessung/hand_05.py` der Planung (Brüche, Mengen statt Bitmasken) und werden in `test_oracle_pricing_dualpreise.py` zusätzlich von einer zweiten
@@ -273,7 +273,7 @@ def test_best_simple_path_by_enumeration(hand, pi_erste_runde):
     assert laenge == pytest.approx(summe) == pytest.approx(-28)
 
 
-# --- Master und Spaltenerzeugung ---------------------------------------------------------------------------------------------------------
+# --- Master und Spaltengenerierung ---------------------------------------------------------------------------------------------------------
 
 @pytest.mark.parametrize("art", ["ueberdeckung", "partition"])
 def test_master_of_the_first_round_gives_the_single_trip_costs_as_prices(hand, art):

@@ -1,4 +1,4 @@
-"""Die Spaltenerzeugung: Schleife über Master (`pdp_master.loese_master`) und Pricing (`pdp_algorithm.labeling`), mit optionaler einfacher Glättung der Dualpreise.
+"""Die Spaltengenerierung: Schleife über Master (`pdp_master.loese_master`) und Pricing (`pdp_algorithm.labeling`), mit optionaler einfacher Glättung der Dualpreise.
 
 Start: die Einzelfahrten 0-j-0 als Spalten. Je Runde: Master lösen (Dualpreise), Pricing mit den Preisen, die besten neuen Spalten anhängen; Ende, wenn keine Route mit negativen
 reduzierten Kosten mehr gefunden wird. Die Schranke ist der letzte Master-Wert (bei elementarem Pricing der Wert des LP über alle zulässigen Routen).
@@ -51,13 +51,13 @@ def einzelfahrten(inst: Instanz) -> list:
 
 def spaltenerzeugung(inst: Instanz, k: int | None = None, art: str = "ueberdeckung", alpha: float = 0.0, spalten_je_runde: int = C.SPALTEN_JE_RUNDE,
                      max_labels: int = C.LABEL_CAP, max_runden: int = C.MAX_RUNDEN, start=None) -> Lauf:
-    """Spaltenerzeugung bis zum Ende. `k`: Gedächtnis des Pricings (None = elementar). `alpha`: Glättung (0 = aus). `spalten_je_runde`: wie viele neue Spalten je Runde angehängt werden."""
+    """Spaltengenerierung bis zum Ende. `k`: Gedächtnis des Pricings (None = elementar). `alpha`: Glättung (0 = aus). `spalten_je_runde`: wie viele neue Spalten je Runde angehängt werden."""
     spalten = list(einzelfahrten(inst) if start is None else start)
     if start is None:
         for (j,) in spalten:
             ok, text = pruefe_route(inst, (j,))
             if not ok:
-                raise ValueError(f"Die Einzelfahrt zu Kunde {j} ist nicht zulässig ({text}): der Start der Spaltenerzeugung setzt voraus, dass jeder Kunde allein bedient werden kann")
+                raise ValueError(f"Die Einzelfahrt zu Kunde {j} ist nicht zulässig ({text}): der Start der Spaltengenerierung setzt voraus, dass jeder Kunde allein bedient werden kann")
     bekannt = set(spalten)
     runden = []
     zentrum = None

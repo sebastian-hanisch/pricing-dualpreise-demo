@@ -1,12 +1,12 @@
 """Kern der Demo (Standardbibliothek): Labeling mit Dualpreisen, Dijkstra-Vorführung und die Aufzählungen für die Gegenproben.
 
-Das **Pricing** der Spaltenerzeugung sucht einen Weg Depot, Kunden, Depot mit den kleinsten **reduzierten Kosten**: Entfernungen minus die Dualpreise der besuchten
+Das **Pricing** der Spaltengenerierung sucht einen Weg Depot, Kunden, Depot mit den kleinsten **reduzierten Kosten**: Entfernungen minus die Dualpreise der besuchten
 Kunden. Ein **Label** steht für einen Teilweg bis zu einem Kunden: Zeit (Beginn der Bedienung), reduzierte Kosten, Last und ein Gedächtnis (welche Kunden der
 Weg nicht noch einmal besuchen darf). Ein Label **dominiert** ein anderes am selben Kunden, wenn es in allen Größen höchstens so groß ist (beim Gedächtnis: eine
 Teilmenge) und deshalb auf jeder Fortsetzung nie schlechter ist.
 
 Aufbau nach DEMO-PLAYBOOK §1b: jede Regel ist eine Funktion mit expliziten Ein- und Ausgaben, es gibt keinen versteckten Zustand; `labeling` ruft die Regeln
-nur der Reihe nach auf. Die Spaltenerzeugung (Schleife über Master und Pricing) steht in `pdp_colgen.py`, der Master in `pdp_master.py`.
+nur der Reihe nach auf. Die Spaltengenerierung (Schleife über Master und Pricing) steht in `pdp_colgen.py`, der Master in `pdp_master.py`.
 
 Gezählt werden erzeugte Labels (die Messgröße, hardwareunabhängig), nie Sekunden."""
 

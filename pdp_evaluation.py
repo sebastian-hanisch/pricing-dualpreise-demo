@@ -81,7 +81,7 @@ class Settings:
 @dataclass(frozen=True)
 class HandAnalyse:
     inst: Instanz
-    lauf: G.Lauf                 # Spaltenerzeugung am Handbeispiel, eine neue Spalte je Runde
+    lauf: G.Lauf                 # Spaltengenerierung am Handbeispiel, eine neue Spalte je Runde
     wege: tuple                  # alle zulässigen elementaren Wege (Aufzählung)
     gegen_wert: float            # Master über alle diese Wege als Spalten
     negativ_erste: int           # Wege mit negativen reduzierten Kosten unter den Dualpreisen der ersten Runde
@@ -206,7 +206,7 @@ class GrossAnalyse:
 
 
 def analyse_gross(s: Settings) -> GrossAnalyse:
-    """Spaltenerzeugung live an einer Kundeninstanz (elementares Pricing, Zufalls-Seed aus den Einstellungen)."""
+    """Spaltengenerierung live an einer Kundeninstanz (elementares Pricing, Zufalls-Seed aus den Einstellungen)."""
     inst = instanz_aus_seed(s.n, s.seed, s.breite)
     t0 = time.perf_counter()
     lauf = G.spaltenerzeugung(inst, None, s.art, s.alpha / 100)
@@ -306,10 +306,10 @@ def verdict_labeling(a: LabelingAnalyse, anzahl_wege: int) -> tuple:
 
 
 def verdict_gegenprobe(h: HandAnalyse) -> tuple:
-    """Schranke der Spaltenerzeugung gegen den Master über alle zulässigen Wege und das Zertifikat der letzten Dualpreise."""
+    """Schranke der Spaltengenerierung gegen den Master über alle zulässigen Wege und das Zertifikat der letzten Dualpreise."""
     neue = len(h.lauf.spalten) - h.inst.n
     gleich = abs(h.lauf.schranke - h.gegen_wert) < 1e-6
-    text = (f"Die Spaltenerzeugung endet nach {zahl(h.lauf.anzahl_runden)} Runden mit der Schranke {zahl_kurz(h.lauf.schranke)} und {zahl(neue)} neuen Spalten; ein Master über alle "
+    text = (f"Die Spaltengenerierung endet nach {zahl(h.lauf.anzahl_runden)} Runden mit der Schranke {zahl_kurz(h.lauf.schranke)} und {zahl(neue)} neuen Spalten; ein Master über alle "
             f"{zahl(len(h.wege))} zulässigen elementaren Wege als Spalten gibt {zahl_kurz(h.gegen_wert)} ({'gleich' if gleich else 'ABWEICHUNG'}). Mit den Dualpreisen der letzten Runde haben "
             f"{zahl(h.negativ_letzte)} dieser Wege negative reduzierte Kosten (mit denen der ersten Runde {zahl(h.negativ_erste)}).")
     return ("success" if gleich and h.negativ_letzte == 0 else "error"), text
@@ -322,7 +322,7 @@ def verdict_gross(s: Settings, g: GrossAnalyse) -> tuple:
                            "die Schranke ist nicht bis zum Ende erzeugt.")
     erste = lauf.runden[0].master_wert
     neue = len(lauf.spalten) - s.n
-    return "info", (f"{zahl(s.n)} Kunden, Fensterbreite {zahl(s.breite)}: die Spaltenerzeugung endet nach {zahl(lauf.anzahl_runden)} Runden mit der Schranke {zahl(lauf.schranke, 2)} "
+    return "info", (f"{zahl(s.n)} Kunden, Fensterbreite {zahl(s.breite)}: die Spaltengenerierung endet nach {zahl(lauf.anzahl_runden)} Runden mit der Schranke {zahl(lauf.schranke, 2)} "
                     f"(Master-Wert der ersten Runde {zahl(erste, 2)}, also {prozent(100 * (erste - lauf.schranke) / erste)} darunter). Sie hängt {zahl(neue)} neue Spalten an die {zahl(s.n)} Einzelfahrten "
                     f"und erzeugt {zahl(lauf.labels)} Labels in {zahl(lauf.aufrufe)} Pricing-Aufrufen.")
 
@@ -423,7 +423,7 @@ def fahrplan_text(zeile: tuple) -> str:
 def tabelle_negativ(zn: dict) -> list:
     """Zeilen der Tabelle „negative Bogenlängen“ aus `{"erste": zeile_negativ, "letzte": zeile_negativ}`."""
     return [{
-        "Runde": "erste (nur Einzelfahrten im Master)" if name == "erste" else "letzte (Ende der Spaltenerzeugung)",
+        "Runde": "erste (nur Einzelfahrten im Master)" if name == "erste" else "letzte (Ende der Spaltengenerierung)",
         "Bögen Depot → Kunde negativ (Mittel)": f"{zahl(z['depot']['mittel'], 1)} von {z['depot_gesamt']}",
         "Bögen Kunde → Kunde negativ (Mittel)": f"{zahl(z['kunde']['mittel'], 1)} von {z['kunde_gesamt']} ({prozent(100 * z['kunde']['mittel'] / z['kunde_gesamt'])})",
         "Kundenpaare mit negativem Kreis (Mittel)": f"{zahl(z['paare']['mittel'], 1)} von {z['paare_gesamt']}"} for name, z in zn.items()]

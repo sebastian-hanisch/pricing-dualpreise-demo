@@ -2,11 +2,11 @@
 
 **[→ Demo live ausprobieren](https://sebastianhanisch-pricing-dualpreise-demo.streamlit.app/)**
 
-Demo der Reihe „Ressourcenwege und Spaltenerzeugung“ in der „Konzepte“-Reihe der Website „Sebastian Hanisch – Operations Research und Machine Learning“. Sie zeigt, was am **Pricing** der Spaltenerzeugung neu ist: Die Bogenlängen entstehen aus **Dualpreisen** (Entfernung minus Dualpreis des Zielkunden), viele von ihnen sind negativ, und das übliche Dijkstra-Verfahren findet den kürzesten Weg dann nicht mehr verlässlich (im Handbeispiel verfehlt es ihn). Das Labeling mit Last, Zeitfenstern und Dominanz aus den früheren Demos der Reihe findet den besten fahrbaren Weg (im Handbeispiel −10; der kürzeste Weg ohne Grenzen, −28, ist nicht fahrbar): Es verlängert die Teilwege nach wachsender Zeit statt nach Kosten, und die Grenzen machen die Wege endlich. Das Vehikel ist ein Handbeispiel mit 7 Kunden, das sich von Hand nachrechnen lässt, und selbst erzeugte Kundeninstanzen im Stil der Solomon-Benchmarks (nicht die Originalinstanzen). Solche Wegsuchen sind das Pricing in der Tourenplanung, etwa in [crew-pairing-demo](https://github.com/sebastian-hanisch/crew-pairing-demo); diese Demo erklärt die Schleife dahinter.
+Demo der Reihe „Ressourcenwege und Spaltengenerierung“ in der „Konzepte“-Reihe der Website „Sebastian Hanisch – Operations Research und Machine Learning“. Sie zeigt, was am **Pricing** der Spaltengenerierung neu ist: Die Bogenlängen entstehen aus **Dualpreisen** (Entfernung minus Dualpreis des Zielkunden), viele von ihnen sind negativ, und das übliche Dijkstra-Verfahren findet den kürzesten Weg dann nicht mehr verlässlich (im Handbeispiel verfehlt es ihn). Das Labeling mit Last, Zeitfenstern und Dominanz aus den früheren Demos der Reihe findet den besten fahrbaren Weg (im Handbeispiel −10; der kürzeste Weg ohne Grenzen, −28, ist nicht fahrbar): Es verlängert die Teilwege nach wachsender Zeit statt nach Kosten, und die Grenzen machen die Wege endlich. Das Vehikel ist ein Handbeispiel mit 7 Kunden, das sich von Hand nachrechnen lässt, und selbst erzeugte Kundeninstanzen im Stil der Solomon-Benchmarks (nicht die Originalinstanzen). Solche Wegsuchen sind das Pricing in der Tourenplanung, etwa in [crew-pairing-demo](https://github.com/sebastian-hanisch/crew-pairing-demo); diese Demo erklärt die Schleife dahinter.
 
 ## Kernfrage
 
-Die Spaltenerzeugung löst einen **Master** (ein LP über die bisher bekannten Touren) und fragt mit seinen **Dualpreisen** nach einer neuen Tour, deren Entfernungen weniger kosten, als ihre Kunden an Dualpreisen einbringen. Als Weg im Kundennetz hat der Bogen von i nach j die Länge d(i, j) − π(j). Findet Dijkstra auf diesen Längen den besten Weg, und wenn nicht, was findet den besten fahrbaren Weg? Wie viele Runden braucht die Spaltenerzeugung, und spart die Glättung der Dualpreise Runden?
+Die Spaltengenerierung löst einen **Master** (ein LP über die bisher bekannten Touren) und fragt mit seinen **Dualpreisen** nach einer neuen Tour, deren Entfernungen weniger kosten, als ihre Kunden an Dualpreisen einbringen. Als Weg im Kundennetz hat der Bogen von i nach j die Länge d(i, j) − π(j). Findet Dijkstra auf diesen Längen den besten Weg, und wenn nicht, was findet den besten fahrbaren Weg? Wie viele Runden braucht die Spaltengenerierung, und spart die Glättung der Dualpreise Runden?
 
 ## Befunde und Korrekturen gegenüber dem Plan
 
@@ -30,7 +30,7 @@ Die Spaltenerzeugung löst einen **Master** (ein LP über die bisher bekannten T
 
 Je Runde: Master lösen, mit den Dualpreisen das Labeling rechnen (das offene Label mit der kleinsten Zeit wird über jeden Kunden verlängert; ein neues Label, das von einem lebenden Label desselben Kunden dominiert wird, wird verworfen, ein neues Label, das lebende dominiert, verdrängt sie), die besten neuen Spalten an den Master anhängen (bei den Kundeninstanzen live und in den Messreihen bis zu 15 je Runde, im Handbeispiel eine). Ende, wenn keine Route mit negativen reduzierten Kosten mehr gefunden wird; der letzte Master-Wert ist die Schranke. Die **Glättung** gibt dem Pricing α · (Preise, mit denen das Pricing der Vorrunde gerechnet hat) + (1 − α) · (aktuelle Dualpreise); findet es damit keine Spalte mit negativen reduzierten Kosten unter den echten Dualpreisen (ein **Fehlgriff**), wird sofort mit den echten Dualpreisen gerechnet. Gezählt werden **Runden, Pricing-Aufrufe und erzeugte Labels**, nicht Sekunden.
 
-Fünf Experimente in der App: (1) von den Dualpreisen zu den Bogenlängen, Dijkstra gegen die Aufzählung aller einfachen Wege, (2) Labeling und Spaltenerzeugung am Handbeispiel mit Gegenprobe, (3) eine ganze Spaltenerzeugung live bis 20 Kunden, (4) Glättung der Dualpreise live und als Messreihe, (5) Bänder: negative Längen, Überdeckung gegen Partitionierung, Runden und Spalten.
+Fünf Experimente in der App: (1) von den Dualpreisen zu den Bogenlängen, Dijkstra gegen die Aufzählung aller einfachen Wege, (2) Labeling und Spaltengenerierung am Handbeispiel mit Gegenprobe, (3) eine ganze Spaltengenerierung live bis 20 Kunden, (4) Glättung der Dualpreise live und als Messreihe, (5) Bänder: negative Längen, Überdeckung gegen Partitionierung, Runden und Spalten.
 
 ## Befunde (gemessen, keine Behauptungen)
 
@@ -43,10 +43,10 @@ Alle Zahlen sind Messungen an festen Instanzen. Die Zahl-zu-Test-Tabelle am Ende
 - **Dijkstra mit Entfernung plus Preis** (alle Längen nichtnegativ): Weg 1 mit Länge 12, und die Aufzählung aller 13 699 einfachen Wege (jeder Kunde höchstens einmal, ohne Last und Fenster) gibt denselben Weg und dieselbe Länge; es gehen keine Verbesserungen verloren.
 - **Dijkstra mit Entfernung minus Dualpreis:** Kunde 3 wird zuerst mit Abstand −5 abgeschlossen (Gleichstandsregel: bei gleichem Abstand zuerst der Kunde mit der kleineren Nummer; Kunde 7 hat ebenfalls −5), danach gibt der Bogen von Kunde 4 zu Kunde 3 den Abstand −9 + (−8) = −17, aber Kunde 3 ist abgeschlossen und wird nicht mehr geändert. Es gehen 21 solcher Verbesserungen verloren. Dijkstra liefert Weg 3-4-5-1-7-6-2 mit Länge −24; die Aufzählung aller einfachen Wege findet 4-3-5-1-2-7-6 mit Länge −28. Dijkstra trifft den besten Weg also nicht. Beide Wege sind außerdem unzulässig: der von Dijkstra wegen der Last (7 > 6 bei Kunde 5), der beste einfache Weg ohne Grenzen wegen des Fensters (Ankunft 24 > Fensterende 15 bei Kunde 3). Dijkstra kennt Last und Fenster nicht. Die Zahlen −24 und 21 hängen an der Gleichstandsregel: Mit Kunde 7 zuerst fände Dijkstra den Weg 7-6-3-5-4-1-2 mit Länge −22 und 20 verpassten Verbesserungen; auch dann trifft er den besten einfachen Weg (−28) nicht.
 - **Labeling** (elementar, mit Last, Fenstern, Dominanz) mit den Dualpreisen der ersten Runde: 56 erzeugte Labels, davon 20 sofort verworfen (neu und von einem lebenden Label dominiert, etwa das Label 0-2-3 vom Label 0-3: Kosten −5 ≤ −5, Zeit 5 ≤ 13, Last 3 ≤ 6, Menge {3} ⊆ {2, 3}), 0 später verdrängt, 36 am Ende übrig. Bester Wert −10, zum Beispiel mit dem Weg 2-7-6 (Fahrt 3 + 4 + 2 + 3 = 12, Dualpreise 6 + 10 + 6 = 22; Ankunft bei Kunde 2 zur Zeit 3, bei Kunde 7 zur Zeit 9, bei Kunde 6 zur Zeit 13, Last 3, 5, 6); zwei weitere Wege, 6-7-1 und 5-6-7-1, haben ebenfalls −10. Die Tiefensuche über alle zulässigen elementaren Wege zählt 79 zulässige Wege; 3 davon haben den besten Wert −10 (2-7-6, 6-7-1 und 5-6-7-1), 58 haben negative reduzierte Kosten. Das Labeling liefert 35 der 79 Wege (die übrigen hängen an dominierten Labels).
-- **Spaltenerzeugung mit exaktem Master** (Brüche, Pricing = Labeling, je Runde die beste neue Spalte): 7 Runden, Master-Werte 50, 40, 32, 32, 32, 30, 30, neue Spalten 2-7-6, 5-3-1, 2-1, 3-4, 5-4-1, 6-7-1. **Schranke 30.** Endlösung: 2-7-6 mit Menge 1, 5-3-1, 3-4 und 5-4-1 mit je 1/2; jeder Kunde wird genau einmal überdeckt. Ein Master über alle 79 zulässigen Wege als Spalten gibt ebenfalls 30, und mit den Dualpreisen der letzten Runde hat keiner der 79 Wege negative reduzierte Kosten. Gebraucht wurden 6 neue Spalten zusätzlich zu den 7 Einzelfahrten, im Endmaster stehen also 13 der 79 Wege.
+- **Spaltengenerierung mit exaktem Master** (Brüche, Pricing = Labeling, je Runde die beste neue Spalte): 7 Runden, Master-Werte 50, 40, 32, 32, 32, 30, 30, neue Spalten 2-7-6, 5-3-1, 2-1, 3-4, 5-4-1, 6-7-1. **Schranke 30.** Endlösung: 2-7-6 mit Menge 1, 5-3-1, 3-4 und 5-4-1 mit je 1/2; jeder Kunde wird genau einmal überdeckt. Ein Master über alle 79 zulässigen Wege als Spalten gibt ebenfalls 30, und mit den Dualpreisen der letzten Runde hat keiner der 79 Wege negative reduzierte Kosten. Gebraucht wurden 6 neue Spalten zusätzlich zu den 7 Einzelfahrten, im Endmaster stehen also 13 der 79 Wege.
 - Mit HiGHS als Master (Überdeckung und Partitionierung) ist die Schranke ebenfalls 30; die Zahl der Runden hängt von den gewählten Dualpreisen ab und steht hier nicht fest.
 
-**Kundeninstanzen, eine ganze Spaltenerzeugung live** (elementares Pricing, Überdeckungs-Master; Schranke und Master-Wert der ersten Runde, die Summe der Einzelfahrten):
+**Kundeninstanzen, eine ganze Spaltengenerierung live** (elementares Pricing, Überdeckungs-Master; Schranke und Master-Wert der ersten Runde, die Summe der Einzelfahrten):
 
 | Voreinstellung (Zufalls-Seed) | Master-Wert der ersten Runde | Schranke am Ende |
 |---|---|---|
@@ -59,11 +59,11 @@ Alle Zahlen sind Messungen an festen Instanzen. Die Zahl-zu-Test-Tabelle am Ende
 | Runde | Bögen Depot → Kunde negativ (Mittel) | Bögen Kunde → Kunde negativ (Mittel) | Kundenpaare mit negativem Kreis (Mittel) |
 |---|---|---|---|
 | erste (nur Einzelfahrten im Master) | 30,0 von 30 | 675,7 von 870 (77,7 %) | 435,0 von 435 |
-| letzte (Ende der Spaltenerzeugung) | 4,8 von 30 | 149,2 von 870 (17,1 %) | 69,5 von 435 |
+| letzte (Ende der Spaltengenerierung) | 4,8 von 30 | 149,2 von 870 (17,1 %) | 69,5 von 435 |
 
 In der ersten Runde sind in allen 6 Instanzen alle 30 Bögen vom Depot und alle 435 Kundenpaare negativ.
 
-**Runden und Spalten einer ganzen Spaltenerzeugung** (30 Kunden, Pricing mit Gedächtnis k = 5, Überdeckungs-Master, 6 Instanzen je Fensterbreite, Zufalls-Seeds 0 bis 5; die Spalten schließen die 30 Einzelfahrten vom Start ein):
+**Runden und Spalten einer ganzen Spaltengenerierung** (30 Kunden, Pricing mit Gedächtnis k = 5, Überdeckungs-Master, 6 Instanzen je Fensterbreite, Zufalls-Seeds 0 bis 5; die Spalten schließen die 30 Einzelfahrten vom Start ein):
 
 | Fensterbreite | Runden (Median) | Runden (Minimum) | Runden (Maximum) | Spalten am Ende (Median) | Labels (Median) |
 |---|---|---|---|---|---|
@@ -95,7 +95,7 @@ Der Median der Runden steigt von Breite 40 über 100 auf 200 von Stufe zu Stufe.
 
 Bei α = 0,5 sind die mittleren Runden etwa gleich wie ohne Glättung (innerhalb von 10 %: 13,7 gegen 13,7 bei 20 Kunden, 19,8 gegen 20,5 bei 30 Kunden), die Pricing-Aufrufe sind im Mittel mehr (17,5 gegen 13,7 und 22,8 gegen 20,5). Bei α = 0,8 und bei α = 0,9 braucht die Glättung bei 20 Kunden in 11 von 12 Instanzen mehr Runden als ohne Glättung, bei 30 Kunden in 6 von 6 Instanzen. Gemessen ist nur diese einfache Glättung zur Vorrunde, nicht die Verfahren von Wentges oder du Merle u. a.; die Aussage gilt für diese Regel, diese Instanzen und diesen Master.
 
-**Überdeckung gegen Partitionierung, neu gerechnet** (30 Kunden, je 5 Instanzen mit den Zufalls-Seeds 0 bis 4, Pricing mit Gedächtnis k = 1, 5, 8, Schranke der Spaltenerzeugung mit beiden Mastern):
+**Überdeckung gegen Partitionierung, neu gerechnet** (30 Kunden, je 5 Instanzen mit den Zufalls-Seeds 0 bis 4, Pricing mit Gedächtnis k = 1, 5, 8, Schranke der Spaltengenerierung mit beiden Mastern):
 
 | Instanztyp | Gedächtnis k | Paare | größte Abweichung der Schranke | Schranke Überdeckung (Mittel) |
 |---|---|---|---|---|
@@ -136,7 +136,7 @@ Die Richtung der Befunde ist in beiden Reihen gleich (negative Bögen überwiege
 | Dijkstra mit Entfernung plus Preis, Aufzählung der 13 699 einfachen Wege | `tests/test_claims.py::test_hand_example_dijkstra`, `tests/test_oracle_pricing_dualpreise.py` |
 | Dijkstra mit Entfernung minus Preis (−24, −28, 21 verpasste, Zulässigkeit; Gleichstandsregel: mit Kunde 7 zuerst −22 und 20 verpasste) | `tests/test_claims.py::test_hand_example_dijkstra`, `tests/test_algorithm.py` |
 | Labeling: 56, 20, 0, 36, bester Weg −10, 79 Wege (3 davon mit −10), 35 geliefert, 58 negative | `tests/test_claims.py::test_hand_example_labeling`, `tests/test_oracle_pricing_dualpreise.py` (Tiefensuche, zweite Implementierung) |
-| Spaltenerzeugung mit exaktem Master: 7 Runden, Master-Werte, Spalten, Schranke 30, Endlösung, 6 neue Spalten und 13 von 79 Wegen | `tests/test_oracle_pricing_dualpreise.py::test_exact_column_generation_at_the_hand_example_line_by_line` |
+| Spaltengenerierung mit exaktem Master: 7 Runden, Master-Werte, Spalten, Schranke 30, Endlösung, 6 neue Spalten und 13 von 79 Wegen | `tests/test_oracle_pricing_dualpreise.py::test_exact_column_generation_at_the_hand_example_line_by_line` |
 | Schranke 30 mit HiGHS, Überdeckung und Partitionierung | `tests/test_claims.py::test_hand_example_highs_bound` |
 | Voreinstellungen der Kundeninstanzen (Master-Wert der ersten Runde, Schranke) | `tests/test_claims.py::test_live_presets_numbers` |
 | Alle Messtabellen (negative Bögen, Runden, Glättung, Master) | `tests/test_claims.py::test_readme_tables_are_generated_from_the_data`, `tests/test_baender.py` (Zusammenfassung aus den Einzelwerten, Stichproben neu gerechnet) |
@@ -179,11 +179,11 @@ Annahmen, Grenzen und bekannte Probleme (derselbe Wortlaut wie im Expander **⚠
 
 Prüfstand für alle Einträge: nur Abstract oder Suchtreffer gesehen, **kein Volltext gelesen**; keine Zahl dieser Demo stammt aus der Literatur.
 
-- Dantzig, Wolfe (1960): *Decomposition Principle for Linear Programs*, Operations Research 8(1), S. 101–111 (Spaltenerzeugung am LP).
+- Dantzig, Wolfe (1960): *Decomposition Principle for Linear Programs*, Operations Research 8(1), S. 101–111 (Spaltengenerierung am LP).
 - Gilmore, Gomory (1961): Operations Research 9(6), S. 849–859 (erste Anwendung am Cutting Stock; Pricing = Rucksack).
 - Desrochers, Soumis (1988): *A generalized permanent labelling algorithm for the shortest path problem with time windows*, INFOR 26, S. 191–212 (Seitenzahl in den Quellen uneinheitlich; Label-Setting mit Zeitfenstern).
 - Lübbecke, Desrosiers (2005): *Selected Topics in Column Generation*, Operations Research 53(6), S. 1007–1023 (duale Sicht, Entartung, Stabilisierung).
-- du Merle, Villeneuve, Desrosiers, Hansen (1999): Discrete Mathematics 194(1–3), S. 229–237 (stabilisierte Spaltenerzeugung, Strafen im Dualraum).
+- du Merle, Villeneuve, Desrosiers, Hansen (1999): Discrete Mathematics 194(1–3), S. 229–237 (stabilisierte Spaltengenerierung, Strafen im Dualraum).
 - Irnich, Desaulniers (2005): *Shortest Path Problems with Resource Constraints*, in: Column Generation, Springer, S. 33–65 (Standardreferenz; nur das Zitat gesehen, der Inhalt ist nicht geprüft).
 - Die einfache Glättung (nach Neame) und das Verfahren von Wentges sind aus dem Gedächtnis genannt und **nicht geprüft**.
 
@@ -199,8 +199,8 @@ Prüfstand für alle Einträge: nur Abstract oder Suchtreffer gesehen, **kein Vo
 
 200 Tests (`pytest --collect-only -q tests`), alle im Ordner `tests/`:
 
-- **Handrechnung:** `tests/conftest.py` enthält das Handbeispiel von Hand aus der Tabelle der Aufgabe; die erwarteten Werte stehen als Rechnung da (`tests/test_algorithm.py`), je Einheit des Labelings (Verlängerung, Rückkehr, Dominanz, Gedächtnis), Dijkstra, Master und Spaltenerzeugung.
-- **Orakel** (`tests/test_oracle_pricing_dualpreise.py`): Labeling gegen die Tiefensuche über alle zulässigen elementaren Wege (180 Fälle) und, für ein Gedächtnis kleiner als die Kundenzahl, gegen die Tiefensuche mit der Gedächtnisregel auf dem ganzen Weg; zweite Implementierung des Labelings mit Mengen und Brüchen (`tests/referenz.py`); Master gegen einen exakten Master mit Brüchen und die Aufzählung aller Wege als Spalten (Dualitätszertifikat); exakte Spaltenerzeugung Zeile für Zeile; Dijkstra gegen networkx und die Aufzählung aller einfachen Wege.
+- **Handrechnung:** `tests/conftest.py` enthält das Handbeispiel von Hand aus der Tabelle der Aufgabe; die erwarteten Werte stehen als Rechnung da (`tests/test_algorithm.py`), je Einheit des Labelings (Verlängerung, Rückkehr, Dominanz, Gedächtnis), Dijkstra, Master und Spaltengenerierung.
+- **Orakel** (`tests/test_oracle_pricing_dualpreise.py`): Labeling gegen die Tiefensuche über alle zulässigen elementaren Wege (180 Fälle) und, für ein Gedächtnis kleiner als die Kundenzahl, gegen die Tiefensuche mit der Gedächtnisregel auf dem ganzen Weg; zweite Implementierung des Labelings mit Mengen und Brüchen (`tests/referenz.py`); Master gegen einen exakten Master mit Brüchen und die Aufzählung aller Wege als Spalten (Dualitätszertifikat); exakte Spaltengenerierung Zeile für Zeile; Dijkstra gegen networkx und die Aufzählung aller einfachen Wege.
 - **Eigenschaften** (`tests/test_eigenschaften_pricing_dualpreise.py`): Master-Wert fällt nie, alle Spalten zulässig, mehr Spalten, breitere Fenster und größere Kapazität verschlechtern die Schranke nie, größeres Gedächtnis gibt höhere oder gleiche Schranke, Umnummerieren und Glättung ändern die Schranke nicht, gleicher Zufalls-Seed gleiche Ausgabe auch in einem zweiten Prozess mit anderem Hash-Seed.
 - **Randfälle** (`tests/test_edge_cases.py`): ein und zwei Kunden, alle Dualpreise null, Kunden, die sich nicht kombinieren lassen, Kapazität unter fast jeder Last, zwei Kunden am selben Ort, Grenzen inklusive.
 - **Aussagen** (`tests/test_claims.py`, `tests/test_baender.py`, `tests/test_verdicts.py`): jede Zahl dieser README, die Messreihen (Zusammenfassungen aus den Einzelwerten, Stichproben neu gerechnet), jedes Verdikt mit seinen Schwellen, je Voreinstellung die erwartete Verdikt-Zeile.
@@ -220,7 +220,7 @@ Die Laufzeit der Suite hängt von der Auslastung der Maschine ab und steht desha
 | `data/baender_negativ.json`, `data/baender_runden.json`, `data/baender_glaettung.json`, `data/baender_master.json` | feste Messreihen, neu gerechnet mit dem Kern der Demo (Einzelwerte je Instanz, Quelle je Zeile, Python- und scipy-Version) |
 | `data/fruehere_messreihe.json` | Zahlen der früheren Messreihe aus den Rohdateien (nicht neu gerechnet) |
 | `pdp_algorithm.py` | Kern: Verlängerung, Dominanz, Labeling, Dijkstra-Vorführung, Aufzählungen, Prüfer |
-| `pdp_colgen.py` | Spaltenerzeugung mit optionaler Glättung der Dualpreise |
+| `pdp_colgen.py` | Spaltengenerierung mit optionaler Glättung der Dualpreise |
 | `pdp_constants.py` | Regler-Grenzen, feste Annahmen, Farben, Voreinstellungen |
 | `pdp_evaluation.py` | Analysen, Verdikte als reine Funktionen, Tabellenzeilen, Lader der Messreihen |
 | `pdp_layout.py` | Fester Kopf (Stylesheet) |

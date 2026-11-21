@@ -1,5 +1,5 @@
 {
- "beschreibung": "Schranke der Spaltenerzeugung mit Überdeckungs- und mit Partitionierungs-Master, je Instanz beide.",
+ "beschreibung": "Schranke der Spaltengenerierung mit Überdeckungs- und mit Partitionierungs-Master, je Instanz beide.",
  "umgebung": "Python 3.14.6, scipy 1.18.1",
  "zeilen": [
   {

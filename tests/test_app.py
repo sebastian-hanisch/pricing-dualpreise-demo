@@ -196,8 +196,8 @@ def test_live_smoothing_compares_with_the_run_without_smoothing():
 def test_expanders_are_found_by_their_titles_and_the_first_is_the_how_it_works_one():
     at = _fresh_app()
     titel = {e.label for e in at.expander}
-    assert {"💬 In einfachen Worten", "So funktioniert das Pricing in der Spaltenerzeugung", "📐 Mathematische Formulierung", "⚠️ Annahmen, Grenzen und bekannte Probleme"} <= titel
-    assert next(e for e in at.expander if e.label == "So funktioniert das Pricing in der Spaltenerzeugung").proto.expanded
+    assert {"💬 In einfachen Worten", "So funktioniert das Pricing in der Spaltengenerierung", "📐 Mathematische Formulierung", "⚠️ Annahmen, Grenzen und bekannte Probleme"} <= titel
+    assert next(e for e in at.expander if e.label == "So funktioniert das Pricing in der Spaltengenerierung").proto.expanded
 
 
 def test_five_experiments_and_the_section_of_the_assumptions_exist():

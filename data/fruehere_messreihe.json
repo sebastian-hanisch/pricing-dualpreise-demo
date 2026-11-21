@@ -31,7 +31,7 @@
   "quelle": "vormessung/out_v7_zufall_auswertung.txt, out_v7_cluster_auswertung.txt, out_v7_lang_auswertung.txt (n = 30, 3 Instanztypen mit je 5 Instanzen, Pricing k = 1, 5, 8 und elementar, soweit fertig: 16 + 16 + 15 Paare)"
  },
  "v4_schranken": {
-  "quelle": "vormessung/out_v4.txt (n = 30, Breite 100, Zufalls-Seeds 0 bis 5 von random.Random, k = 5): Schranke der Spaltenerzeugung je Instanz",
+  "quelle": "vormessung/out_v4.txt (n = 30, Breite 100, Zufalls-Seeds 0 bis 5 von random.Random, k = 5): Schranke der Spaltengenerierung je Instanz",
   "werte": [811.3095, 869.8012, 869.165, 849.2464, 786.2826, 900.0444]
  }
 }

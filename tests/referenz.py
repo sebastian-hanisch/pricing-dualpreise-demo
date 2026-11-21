@@ -98,7 +98,7 @@ def master_exakt(inst, spalten):
 
 
 def spaltenerzeugung_exakt(inst, pricing="labeling"):
-    """Spaltenerzeugung mit dem exakten Master. Pricing „labeling“: die beste Route unter den Routen, die `labeling_ref` liefert (nicht dominierte Labels); „dfs“: die beste Route
+    """Spaltengenerierung mit dem exakten Master. Pricing „labeling“: die beste Route unter den Routen, die `labeling_ref` liefert (nicht dominierte Labels); „dfs“: die beste Route
     unter allen zulässigen (Tiefensuche). Je Runde eine Spalte, Gleichstand: kleinste Folge. Rückgabe: Liste der Runden (Master-Wert, Dualpreise, neue Spalte oder None) und die Spalten."""
     alle = wege_dfs(inst) if pricing == "dfs" else None
     spalten = [(j,) for j in range(1, inst.n + 1)]

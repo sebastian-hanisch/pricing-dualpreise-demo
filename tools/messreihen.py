@@ -1,7 +1,7 @@
 """Erzeugt die festen Messreihen (Bänder) der Demo als JSON unter data/, gerechnet mit demselben Kern wie die App (SplitMix64-Instanzen, HiGHS-Master).
 
     python tools/messreihen.py negativ     Teil A: negative Bogenlängen in der ersten und in der letzten Runde (n = 30, Breite 100, Zufalls-Seeds 0 bis 5, k = 5)
-    python tools/messreihen.py runden      Teil B: Runden, Spalten und Labels einer Spaltenerzeugung (n = 30, Breite 40/100/200, 6 Instanzen, k = 5)
+    python tools/messreihen.py runden      Teil B: Runden, Spalten und Labels einer Spaltengenerierung (n = 30, Breite 40/100/200, 6 Instanzen, k = 5)
     python tools/messreihen.py glaettung   Teil C und D: Glättung α = 0, 0,5, 0,8, 0,9 (n = 20 mit 12 Instanzen, n = 30 mit 6 Instanzen, Breite 100, k = 5)
     python tools/messreihen.py master      Überdeckung gegen Partitionierung (n = 30, drei Instanztypen mit je 5 Instanzen, k = 1, 5, 8)
     python tools/messreihen.py alle
@@ -36,7 +36,7 @@ def schreibe_json(name: str, daten: dict) -> None:
 
 def messung_negativ(n: int = C.BAND_N30, breite: int = 100, seeds=range(6), k: int = C.BAND_K) -> dict:
     zeilen = []
-    for runde, name in (("erste", "erste Runde: nur Einzelfahrten im Master, Dualpreis = 2 x Entfernung zum Depot"), ("letzte", "letzte Runde der Spaltenerzeugung (Master-Dualpreise, wenn das Pricing nichts mehr findet)")):
+    for runde, name in (("erste", "erste Runde: nur Einzelfahrten im Master, Dualpreis = 2 x Entfernung zum Depot"), ("letzte", "letzte Runde der Spaltengenerierung (Master-Dualpreise, wenn das Pricing nichts mehr findet)")):
         je_inst = []
         for seed in seeds:
             inst = S.instanz_aus_seed(n, seed, breite)
@@ -61,7 +61,7 @@ def messung_runden(n: int = C.BAND_N30, k: int = C.BAND_K, seeds=range(6)) -> di
             je_inst.append({"seed": seed, "runden": lauf.anzahl_runden, "spalten": len(lauf.spalten), "labels": lauf.labels, "schranke": round(lauf.schranke, 6)})
         zeilen.append({"breite": breite, "n": n, "k": k, "instanzen": je_inst,
                        "quelle": f"tools/messreihen.py runden: n = {n}, Breite {breite}, Zufalls-Seeds {seeds[0]} bis {seeds[-1]}, Pricing k = {k}, Überdeckungs-Master, {C.SPALTEN_JE_RUNDE} neue Spalten je Runde"})
-    return {"beschreibung": "Eine ganze Spaltenerzeugung je Instanz bis zur Konvergenz; Spalten einschließlich der n Einzelfahrten vom Start.", "umgebung": UMGEBUNG, "zeilen": zeilen}
+    return {"beschreibung": "Eine ganze Spaltengenerierung je Instanz bis zur Konvergenz; Spalten einschließlich der n Einzelfahrten vom Start.", "umgebung": UMGEBUNG, "zeilen": zeilen}
 
 
 def messung_glaettung(konfig=((20, 12), (30, 6)), breite: int = 100, k: int = C.BAND_K) -> dict:
@@ -98,7 +98,7 @@ def messung_master(n: int = C.BAND_N30, seeds=range(5), ks=(1, 5, 8)) -> dict:
                 je_inst.append({"seed": seed, "ueberdeckung": round(ue.schranke, 6), "partition": round(pa.schranke, 6)})
             zeilen.append({"typ": name, "beschreibung": p["name"], "n": n, "k": k, "instanzen": je_inst,
                            "quelle": f"tools/messreihen.py master: n = {n}, Typ {name} ({p['name']}), Zufalls-Seeds {seeds[0]} bis {seeds[-1]}, Pricing k = {k}"})
-    return {"beschreibung": "Schranke der Spaltenerzeugung mit Überdeckungs- und mit Partitionierungs-Master, je Instanz beide.", "umgebung": UMGEBUNG, "zeilen": zeilen}
+    return {"beschreibung": "Schranke der Spaltengenerierung mit Überdeckungs- und mit Partitionierungs-Master, je Instanz beide.", "umgebung": UMGEBUNG, "zeilen": zeilen}
 
 
 AUFGABEN = {

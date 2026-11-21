@@ -6,7 +6,7 @@ GRID = 100.0                                     # Kantenlänge des Quadrats
 
 # --- Regler ---------------------------------------------------------------------------------------------------------------------------------
 # Komplexität am Regler-Maximum: Das elementare Pricing (Gedächtnis = alle Kunden) erzeugt bei n = 20 und Breite 100 je Pricing-Aufruf einige 10 000 Labels;
-# eine Spaltenerzeugung ruft es etwa 15- bis 25-mal auf. Deshalb gilt LABEL_CAP (Summe der Labels einer ganzen Rechnung).
+# eine Spaltengenerierung ruft es etwa 15- bis 25-mal auf. Deshalb gilt LABEL_CAP (Summe der Labels einer ganzen Rechnung).
 N_MIN, N_MAX, DEFAULT_N = 5, 20, 12                 # Zahl der Kunden (Live-Rechnung nur bis 20; 30 Kunden sind feste Messreihen)
 BREITE_MIN, BREITE_MAX, BREITE_STEP, DEFAULT_BREITE = 40, 100, 20, 100   # Fensterbreite
 SEED_MAX, DEFAULT_SEED = 999999, 7

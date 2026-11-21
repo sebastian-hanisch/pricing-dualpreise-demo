@@ -1,4 +1,4 @@
-"""Der Master der Spaltenerzeugung: ein LP über die bisher bekannten Routen (Spalten), gelöst mit scipy/HiGHS.
+"""Der Master der Spaltengenerierung: ein LP über die bisher bekannten Routen (Spalten), gelöst mit scipy/HiGHS.
 
 Überdeckung: jeder Kunde mindestens einmal, `min c x` mit `A x >= 1`. Partitionierung: jeder Kunde genau einmal, `A x = 1`. Die **Dualpreise** sind die Schattenpreise der
 Kunden-Zeilen; ihr Vorzeichen ist hier an den Handwerten geprüft (`tests/test_algorithm.py`): bei der Überdeckung `-ineqlin.marginals`, bei der Partitionierung `eqlin.marginals`.

@@ -3,7 +3,7 @@
 * Labeling gegen die Tiefensuche über alle zulässigen elementaren Wege (180 Fälle: 60 Instanzen mit 7 Kunden und 3 Fensterbreiten, zufällige Dualpreise), gegen die zweite Labeling-
   Implementierung mit Mengen und Brüchen (`tests/referenz.py`) und, für ein Gedächtnis k kleiner als n, gegen die Tiefensuche mit der ng-Regel auf dem ganzen Weg.
 * Master gegen einen exakten Master mit Brüchen (Simplex nach Bland, kein scipy) und gegen die Aufzählung aller Wege als Spalten; Dualitätszertifikat.
-* Spaltenerzeugung gegen den Master über alle Wege, am Handbeispiel Zeile für Zeile gegen die exakte Spaltenerzeugung.
+* Spaltengenerierung gegen den Master über alle Wege, am Handbeispiel Zeile für Zeile gegen die exakte Spaltengenerierung.
 * Dijkstra gegen networkx und gegen die Aufzählung aller einfachen Wege.
 Zusammen unter 10 Sekunden; der große Lauf (mehr Instanzen) gehört in den Scratch-Ordner."""
 
@@ -155,7 +155,7 @@ def test_cover_equals_partition_with_all_routes_as_columns_for_metric_costs():
         assert loese_master(inst, wege, "ueberdeckung").wert == pytest.approx(loese_master(inst, wege, "partition").wert, abs=1e-6), seed
 
 
-# --- Spaltenerzeugung --------------------------------------------------------------------------------------------------------------------
+# --- Spaltengenerierung --------------------------------------------------------------------------------------------------------------------
 
 @pytest.mark.parametrize("art", ["ueberdeckung", "partition"])
 def test_column_generation_bound_equals_the_master_over_all_routes_and_the_duals_certify_it(art):

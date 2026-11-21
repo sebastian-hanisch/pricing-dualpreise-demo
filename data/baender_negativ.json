@@ -53,7 +53,7 @@
   },
   {
    "runde": "letzte",
-   "beschreibung": "letzte Runde der Spaltenerzeugung (Master-Dualpreise, wenn das Pricing nichts mehr findet)",
+   "beschreibung": "letzte Runde der Spaltengenerierung (Master-Dualpreise, wenn das Pricing nichts mehr findet)",
    "n": 30,
    "breite": 100,
    "k": 5,

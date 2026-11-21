@@ -150,7 +150,7 @@ def test_big_verdict_branches(hand):
     lauf = G.spaltenerzeugung(inst, None)
     s = ev.Settings()
     kind, text = ev.verdict_gross(s, ev.GrossAnalyse(inst, lauf, None, 0.1))
-    assert kind == "info" and text.startswith("12 Kunden, Fensterbreite 100: die Spaltenerzeugung endet nach") and "Schranke 497,87" in text and "45,3 % darunter" in text
+    assert kind == "info" and text.startswith("12 Kunden, Fensterbreite 100: die Spaltengenerierung endet nach") and "Schranke 497,87" in text and "45,3 % darunter" in text
     assert f"{len(lauf.spalten) - 12} neue Spalten an die 12 Einzelfahrten" in text and f"{lauf.anzahl_runden} Runden" in text
     abgebr = G.Lauf(lauf.runden[:2], lauf.spalten, lauf.schranke, 3_000_001, 4, 0, True)
     kind2, text2 = ev.verdict_gross(s, ev.GrossAnalyse(inst, abgebr, None, 0.1))
