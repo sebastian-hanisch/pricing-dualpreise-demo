@@ -295,7 +295,7 @@ st.markdown("---")
 st.subheader("🔬 Experiment 4: Glättung der Dualpreise – einfache Glättung zur Vorrunde, nicht Wentges und nicht du Merle")
 st.markdown(
     "Die Dualpreise des Masters springen von Runde zu Runde. Die **Glättung** gibt dem Pricing nicht die aktuellen Dualpreise π, sondern α · (Preise, mit denen das Pricing der Vorrunde gerechnet hat) + (1 − α) · π. Findet das Pricing damit "
-    "keine Spalte, die unter den echten Dualpreisen negative reduzierte Kosten hat, ist das ein **Fehlgriff**, und es wird sofort mit den echten Dualpreisen noch einmal gerechnet. "
+    "keine Spalte, die unter den echten Dualpreisen negative reduzierte Kosten hat, ist das ein **Fehlgriff** (englisch Mispricing), und es wird sofort mit den echten Dualpreisen noch einmal gerechnet. "
     "Die Schranke ist in allen gemessenen Instanzen und allen α gleich; gefragt ist, ob die Glättung Runden spart. Gemessen ist nur diese einfache Glättung, nicht die Verfahren von Wentges oder du Merle u. a."
 )
 gl = _glaettung(settings.partition, settings.alpha)
